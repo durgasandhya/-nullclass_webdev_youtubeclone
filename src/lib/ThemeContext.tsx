@@ -33,7 +33,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const determineTheme = async () => {
       try {
         // Get user's location from IP
-        const response = await axios.get("http://ip-api.com/json/");
+        const response = await axios.get("https://ip-api.com/json/");
         const { regionName, city } = response.data;
 
         setLocation(city);
