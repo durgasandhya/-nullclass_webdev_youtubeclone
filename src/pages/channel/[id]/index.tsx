@@ -3,6 +3,7 @@ import Channeltabs from "@/components/Channeltabs";
 import ChannelVideos from "@/components/ChannelVideos";
 import VideoUploader from "@/components/VideoUploader";
 import { useUser } from "@/lib/AuthContext";
+import { useTheme } from "@/lib/ThemeContext";
 import { notFound } from "next/navigation";
 import { useRouter } from "next/router";
 import React from "react";
@@ -11,6 +12,7 @@ const index = () => {
   const router = useRouter();
   const { id } = router.query;
   const { user } = useUser();
+  const { theme } = useTheme();
   // const user: any = {
   //   id: "1",
   //   name: "John Doe",
@@ -49,7 +51,7 @@ const index = () => {
       },
     ];
     return (
-      <div className="flex-1 min-h-screen bg-white">
+      <div className={`flex-1 min-h-screen ${theme === "light" ? "bg-white text-black" : "bg-gray-900 text-white"}`}>
         <div className="max-w-full mx-auto">
           <ChannelHeader channel={channel} user={user} />
           <Channeltabs />
