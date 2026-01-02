@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Button } from "./ui/button";
+import { useTheme } from "@/lib/ThemeContext";
 
 const ChannelHeader = ({ channel, user }: any) => {
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const { theme } = useTheme();
   return (
     <div className="w-full">
       {/* Banner */}
@@ -19,12 +21,14 @@ const ChannelHeader = ({ channel, user }: any) => {
           </Avatar>
 
           <div className="flex-1 space-y-2">
-            <h1 className="text-2xl md:text-4xl font-bold">{channel?.channelname}</h1>
-            <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+            <h1 className={`text-2xl md:text-4xl font-bold ${theme === "light" ? "text-black" : "text-white"}`}>
+              {channel?.channelname}
+            </h1>
+            <div className={`flex flex-wrap gap-4 text-sm ${theme === "light" ? "text-gray-600" : "text-gray-300"}`}>
               <span>@{channel?.channelname.toLowerCase().replace(/\s+/g, "")}</span>
             </div>
             {channel?.description && (
-              <p className="text-sm text-gray-700 max-w-2xl">
+              <p className={`text-sm max-w-2xl ${theme === "light" ? "text-gray-700" : "text-gray-300"}`}>
                 {channel?.description}
               </p>
             )}
