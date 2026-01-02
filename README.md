@@ -3,10 +3,6 @@
 ## 🎯 Project Overview
 A feature-rich video streaming platform built with Next.js, React, Node.js, and MongoDB, implementing 6 comprehensive internship tasks for NullClass.
 
-## 🚀 Live Demo
-- **Frontend:** [Will be updated after Vercel deployment]
-- **Backend:** [Will be updated after Render deployment]
-
 ## ✨ All 6 Internship Tasks Completed
 
 ### ✅ Task 1: Multilingual Comment System
@@ -28,8 +24,9 @@ A feature-rich video streaming platform built with Next.js, React, Node.js, and 
 - Real-time usage dashboard
 
 ### ✅ Task 4: Dynamic Theme & OTP Authentication
-- Location-based automatic theming (day/night)
-- OTP login via SMS (Twilio)
+- Location-based automatic theming
+- For South india (Tamil nadu, Kerala, karnataka, Andhra and Telungana) if users access between 10AM - 12PM they get white theme and OTP triggred through email
+- For other timings and states 'Dark' theme and OTP triggered through mobile number
 - Firebase Google OAuth
 - Timezone-aware theme switching
 
@@ -37,7 +34,6 @@ A feature-rich video streaming platform built with Next.js, React, Node.js, and 
 - Single tap center: Play/Pause
 - Double tap left: Rewind 10s
 - Double tap right: Forward 10s
-- Custom controls UI with auto-hide
 
 ### ✅ Task 6: Real-Time Video Calling
 - WebRTC peer-to-peer video calls
@@ -59,16 +55,11 @@ A feature-rich video streaming platform built with Next.js, React, Node.js, and 
 ## 📱 Fully Responsive
 Works seamlessly on mobile, tablet, and desktop devices.
 
-## 🧪 Testing
-- Unit Tests: 24/28 passed (85.7%)
-- Cross-browser: Chrome, Firefox, Edge
-- Mobile: iOS and Android tested
-
 ## 🚀 Quick Start
 
 ```bash
 # Clone repository
-git clone [your-repo-url]
+git clone https://github.com/durgasandhya/-nullclass_webdev_youtubeclone
 
 # Install frontend dependencies
 cd yourtube
@@ -87,14 +78,6 @@ npm run dev
 ```
 
 ## 👨‍💻 Developer
-**Name:** [Your Name]
+**Name:** Durga Sandhya
 **Organization:** NullClass
-**Duration:** [Start Date - End Date]
-
-## 📧 Contact
-- Email: [Your Email]
-- LinkedIn: [Your Profile]
-- GitHub: [Your Profile]
-
----
 **Built during NullClass Full Stack Web Development Internship**
