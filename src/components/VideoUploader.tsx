@@ -6,8 +6,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Progress } from "./ui/progress";
 import axiosInstance from "@/lib/axiosinstance";
+import { useTheme } from "@/lib/ThemeContext";
 
 const VideoUploader = ({ channelId, channelName }: any) => {
+  const { theme } = useTheme();
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -83,23 +85,27 @@ const VideoUploader = ({ channelId, channelName }: any) => {
     }
   };
   return (
-    <div className="bg-gray-50 rounded-lg p-6">
-      <h2 className="text-xl font-semibold mb-4">Upload a video</h2>
+    <div className={`rounded-lg p-6 ${theme === "light" ? "bg-gray-50" : "bg-gray-800"}`}>
+      <h2 className={`text-xl font-semibold mb-4 ${theme === "light" ? "text-black" : "text-white"}`}>Upload a video</h2>
 
       <div className="space-y-4">
         {!videoFile ? (
           <div
-            className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:bg-gray-100 transition-colors"
+            className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+              theme === "light"
+                ? "border-gray-300 hover:bg-gray-100"
+                : "border-gray-600 hover:bg-gray-700"
+            }`}
             onClick={() => fileInputRef.current?.click()}
           >
-            <Upload className="w-12 h-12 mx-auto text-gray-400 mb-2" />
-            <p className="text-lg font-medium">
+            <Upload className={`w-12 h-12 mx-auto mb-2 ${theme === "light" ? "text-gray-400" : "text-gray-300"}`} />
+            <p className={`text-lg font-medium ${theme === "light" ? "text-black" : "text-white"}`}>
               Drag and drop video files to upload
             </p>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className={`text-sm mt-1 ${theme === "light" ? "text-gray-500" : "text-gray-300"}`}>
               or click to select files
             </p>
-            <p className="text-xs text-gray-400 mt-4">
+            <p className={`text-xs mt-4 ${theme === "light" ? "text-gray-400" : "text-gray-400"}`}>
               MP4, WebM, MOV or AVI • Up to 100MB
             </p>
             <input
@@ -112,13 +118,15 @@ const VideoUploader = ({ channelId, channelName }: any) => {
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="flex items-center gap-3 p-3 bg-white rounded-lg border">
+            <div className={`flex items-center gap-3 p-3 rounded-lg border ${
+              theme === "light" ? "bg-white border-gray-200" : "bg-gray-700 border-gray-600"
+            }`}>
               <div className="bg-blue-100 p-2 rounded-md">
                 <FileVideo className="w-6 h-6 text-blue-600" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-medium truncate">{videoFile.name}</p>
-                <p className="text-sm text-gray-500">
+                <p className={`font-medium truncate ${theme === "light" ? "text-black" : "text-white"}`}>{videoFile.name}</p>
+                <p className={`text-sm ${theme === "light" ? "text-gray-500" : "text-gray-300"}`}>
                   {(videoFile.size / (1024 * 1024)).toFixed(2)} MB
                 </p>
               </div>
@@ -136,21 +144,21 @@ const VideoUploader = ({ channelId, channelName }: any) => {
 
             <div className="space-y-3">
               <div>
-                <Label htmlFor="title">Title (required)</Label>
+                <Label htmlFor="title" className={theme === "light" ? "text-black" : "text-white"}>Title (required)</Label>
                 <Input
                   id="title"
                   value={videoTitle}
                   onChange={(e) => setVideoTitle(e.target.value)}
                   placeholder="Add a title that describes your video"
                   disabled={isUploading || uploadComplete}
-                  className="mt-1"
+                  className={`mt-1 ${theme === "light" ? "bg-white text-black" : "bg-gray-600 text-white border-gray-500"}`}
                 />
               </div>
             </div>
 
             {isUploading && (
               <div className="space-y-2">
-                <div className="flex justify-between text-sm">
+                <div className={`flex justify-between text-sm ${theme === "light" ? "text-black" : "text-white"}`}>
                   <span>Uploading...</span>
                   <span>{uploadProgress}%</span>
                 </div>
