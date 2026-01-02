@@ -34,8 +34,8 @@ const OTPModal = ({ open, onClose, onSuccess }: OTPModalProps) => {
   const detectLocation = async () => {
     try {
       setStep("detecting");
-      const response = await axios.get("https://ip-api.com/json/");
-      const { regionName, city, country } = response.data;
+      const response = await axios.get("https://ipapi.co/json/");
+      const { region: regionName, city, country_name: country } = response.data;
 
       setLocation({ city, state: regionName, country });
 
